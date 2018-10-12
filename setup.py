@@ -38,7 +38,7 @@ setup(
     keywords='captain,kubernetes,k8s',
     entry_points={
         'console_scripts': [
-            'cap = captain.main:main'
+            'cap = captain.main:captain'
         ]
     },
 )
