@@ -1,0 +1,16 @@
+language: python
+env:
+  - PYTHONPATH=./ FANTASY_ACTIVE_DB=no FANTASY_ACTIVE_CACHE=no
+python:
+  - "3.4"
+  - "3.5"
+  - "3.5-dev"
+  - "3.6"
+  - "3.6-dev"
+  - "pypy3"
+install:
+  - "pip install -e .[dev]"
+script:
+  - "flake8"
+after_success:
+  - "codecov"

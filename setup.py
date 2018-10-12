@@ -8,7 +8,9 @@ deps = {
     ],
 
     'test': [
-        'pytest'
+        'pytest',
+        'flake8',
+        'pytest-flake8'
     ],
     'dev': []
 }
