@@ -4,9 +4,11 @@ version = '0.1.0-alpha.3'
 
 deps = {
     'captain': [
-        'click'
+        'click',
     ],
-
+    'deploy': [
+        'ansible',
+    ],
     'test': [
         'pytest',
         'flake8',
@@ -24,11 +26,11 @@ deps['dev'] = (
 install_requires = deps['captain']
 
 setup(
-    name='captain-py',
+    name='kaptain',
     version=version,
     packages=find_packages(exclude=["tests"]),
-    url='https://github.com/wangwenpei/captain',
-    download_url='https://github.com/wangwenpei/captain/tarball/master',
+    url='https://github.com/wangwenpei/kaptain',
+    download_url='https://github.com/wangwenpei/kaptain/tarball/master',
     license='MIT',
     author='WANG WENPEI',
     install_requires=install_requires,
@@ -40,7 +42,7 @@ setup(
     keywords='captain,kubernetes,k8s',
     entry_points={
         'console_scripts': [
-            'cap = captain.main:captain'
+            'kap = captain.main:captain'
         ]
     },
 )
