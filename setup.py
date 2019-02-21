@@ -3,12 +3,12 @@ from setuptools import find_packages, setup
 version = '0.1.0-alpha.3'
 
 deps = {
-    'captain': [
+    'kaptain': [
         'click',
     ],
-    'deploy': [
-        'ansible',
-    ],
+    # 'deploy': [
+    #     'ansible',
+    # ],
     'test': [
         'pytest',
         'flake8',
@@ -20,10 +20,10 @@ deps = {
 deps['dev'] = (
         deps['dev'] +
         deps['test'] +
-        deps['captain']
+        deps['kaptain']
 )
 
-install_requires = deps['captain']
+install_requires = deps['kaptain']
 
 setup(
     name='kaptain',
@@ -42,7 +42,7 @@ setup(
     keywords='captain,kubernetes,k8s',
     entry_points={
         'console_scripts': [
-            'kap = captain.main:captain'
+            'kap = kaptain.main:cli'
         ]
     },
 )
