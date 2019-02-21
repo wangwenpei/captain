@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-version = '0.1.0-alpha.4'
+version = '0.1.0'
 
 deps = {
     'kaptain': [
@@ -38,7 +38,7 @@ setup(
     zip_safe=False,
     test_suite="tests",
     author_email='stormxx@1024.engineer',
-    description='A modern deploy tool',
+    description='A modern SRE tool',
     keywords='captain,kubernetes,k8s',
     entry_points={
         'console_scripts': [
