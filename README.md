@@ -1,70 +1,48 @@
-# captain
+# Kaptain
+
+A modern SRE tool.
 
 
-
-## install depends
-
-```
-
-pip install -e .[dev]
+### Install
 
 ```
 
-
-## 指令说明
-
-
-### 初始化
-
-初始化会在当前项目下创建一个.kube-config目录
-
-```
-cap init ./  
-```
-
-参数：
-
-- --template=git://github.com/wangwenpei/template  指定的模板目录
-
-
-### patch
-
-重新构建新的deployment
+pip install kaption
 
 ```
 
-cap patch pod --namespace --context
+### Support version
+
+    python 3.5+
+
+
+
+### report
+
+
+report operation to platform, currently it only support slack.
+
+
+#### pre-config
+
+we need `.git-config` to set user/email. 
+
+```
+vi ~/.gitconfig
+
+# add line like this
+
+[kaption]
+        slack-channel = https://hooks.slack.com/xxx
+        slack-private = https://hooks.slack.com/xxx
 
 ```
 
-### re-create
-
-用于对daemon-set的重新发布
+#### how to
 
 ```
+kap report "hello world" --private   # send to private channel 
 
-cap re-create daemon-set --namespace --context
-
-```
-
-### diff
-
-用于比对多个环境不同的key-value结构
+kap report "hello world"             # send to public channel 
 
 ```
-
-cap diff seed-dev seed-staging
-
-```
-
-参数：
-
-- --with-content  比对内容，如果一样则抛出错误警告
-
-
-
-### search
-
-search 用于搜索caption官方仓库里的配置
-
-

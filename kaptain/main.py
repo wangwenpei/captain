@@ -12,9 +12,9 @@ def captain():
 
 @click.group()
 def cli():
-    """Captain
+    """Kaptain
 
-    A modern deploy tool.
+    A modern SRE tool.
     """
     pass
 
