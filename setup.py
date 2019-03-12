@@ -5,7 +5,7 @@ this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md')) as f:
     long_description = f.read()
 
-version = '0.1.0'
+version = '0.1.1'
 
 deps = {
     'kaptain': [
