@@ -1,5 +1,7 @@
 *.private.*
 *.demo.py
+*.log.json
+
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
 # Byte-compiled / optimized / DLL files
