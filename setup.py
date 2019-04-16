@@ -10,6 +10,7 @@ version = '0.1.1'
 deps = {
     'kaptain': [
         'click',
+        'google-cloud-storage'
     ],
     # 'deploy': [
     #     'ansible',

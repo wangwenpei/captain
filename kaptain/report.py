@@ -37,6 +37,7 @@ def parse_config(git_config, use_private):
               default=False)
 @click.argument('message')
 def report(git_config, message, private):
+    """report operator"""
     cli = click.get_current_context()
     config = parse_config(git_config, private)
 

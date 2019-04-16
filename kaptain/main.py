@@ -1,27 +1,26 @@
 import click
 
+from kaptain import captain
+from kaptain.fetch_log.command import fetch_log
 from kaptain.report import report
 
 
-@click.command()
-def captain():
-    """kaption egg"""
-    print("Let's start coding...")
-    pass
-
-
 @click.group()
-def cli():
+@click.option('--debug', default=False,
+              envvar='KAPTAIN_DEBUG')
+@click.pass_context
+def cli(ctx, debug):
     """Kaptain
 
     A modern SRE tool.
     """
+    ctx.obj = captain.Captain(debug)
     pass
 
 
-cli.add_command(captain)
 cli.add_command(report)
+cli.add_command(fetch_log)
 
 if __name__ == '__main__':
-    captain()
+    cli(obj={})
     pass
