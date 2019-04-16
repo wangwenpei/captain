@@ -1,6 +1,6 @@
 *.private.*
 *.demo.py
-*.log.json
+*.json.log
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template

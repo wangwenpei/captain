@@ -32,11 +32,13 @@ def gcp(ctx, target, save_dir, project, bucket_name):
 
     storage_client = storage.Client(project)
     bucket = storage_client.get_bucket(bucket_name)
+    write_file = '%s/%s' % (save_dir, target)
 
     blobs = bucket.list_blobs()
 
-    for blob in blobs:
-        blob.download_to_filename('%s/%s' % (save_dir, target))
-        print(blob.name)
+    with open(write_file, 'ab') as fp:
+        for blob in blobs:
+            string_buffer = blob.download_as_string()
+            fp.write(string_buffer)
 
     pass
