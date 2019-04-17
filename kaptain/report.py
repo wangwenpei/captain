@@ -35,8 +35,9 @@ def parse_config(git_config, use_private):
 @click.option('--private',
               is_flag=True,
               default=False)
+@click.option('--channel')
 @click.argument('message')
-def report(git_config, message, private):
+def report(git_config, message, private, channel):
     """report operator"""
     cli = click.get_current_context()
     config = parse_config(git_config, private)
@@ -45,8 +46,10 @@ def report(git_config, message, private):
         cli.fail("no slack channel found,please set it.")
         pass
 
+    slack_channel = channel if channel is not None else config['slack_channel']
+
     ret = requests.post(
-        config['slack_channel'],
+        slack_channel,
         headers={
             'content-type': 'application/json'
         }, data=json.dumps({
