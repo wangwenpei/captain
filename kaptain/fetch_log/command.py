@@ -7,6 +7,10 @@
 import click
 
 
+# from ..captain import Captain
+# pass_captain = click.make_pass_decorator(Captain)
+
+
 @click.group('fetch-log')
 def fetch_log():
     """fetch log"""
@@ -21,12 +25,11 @@ def fetch_log():
               envvar="KAPTAIN_FETCH_LOG_PROJECT", required=True)
 @click.option('--bucket-name',
               envvar="KAPTAIN_FETCH_LOG_BUCKET", required=True)
+@click.option('--filter')
 @click.argument('target')
 @click.pass_context
-def gcp(ctx, target, save_dir, project, bucket_name):
-    """fetch gcp log
-
-    """
+def gcp(ctx, target, save_dir, project, bucket_name, filter):
+    """fetch gcp log"""
 
     from google.cloud import storage
 
@@ -38,7 +41,11 @@ def gcp(ctx, target, save_dir, project, bucket_name):
 
     with open(write_file, 'ab') as fp:
         for blob in blobs:
-            string_buffer = blob.download_as_string()
-            fp.write(string_buffer)
+            if filter in blob.name:
+                print(blob.name, '匹配成功')
+                string_buffer = blob.download_as_string()
+                fp.write(string_buffer)
+            else:
+                print(blob.name, '跳过匹配')
 
     pass

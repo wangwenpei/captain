@@ -8,13 +8,15 @@ from kaptain.report import report
 @click.group()
 @click.option('--debug', default=False,
               envvar='KAPTAIN_DEBUG')
+@click.option('--dry-run', default=False)
+@click.option('-v', '--verbose', count=True)
 @click.pass_context
-def cli(ctx, debug):
+def cli(ctx, debug, dry_run, verbose):
     """Kaptain
 
     A modern SRE tool.
     """
-    ctx.obj = captain.Captain(debug)
+    ctx.obj = captain.Captain(debug, dry_run, verbose)
     pass
 
 

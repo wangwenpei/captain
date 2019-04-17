@@ -9,13 +9,14 @@ def test_fetch_log():
         "./test-resources")
 
     os.environ['KAPTAIN_FETCH_LOG_BUCKET'] = 'archive-log'
-    os.environ['KAPTAIN_FETCH_LOG_BUCKET'] = 'sre-demo-bucket'
+    # os.environ['KAPTAIN_FETCH_LOG_BUCKET'] = 'sre-demo-bucket'
 
     with fetch_log.make_context("[In-Dev]",
-                                args=['gcp', 'raw_trans.log.json']) as ctx:
+                                args=['gcp', 'raw_trans.log.json',
+                                      '--filter="kubernetes.var.log.containers.parity-nginx-mainnet-56cdc68c94-p6f28_nodefarm_parity-nginx-2219b8452634665a9e655da08cba1ff7225f3315de0581c975d7df4a13c5fa03.log/2019/04/12"']) as ctx:
         result = fetch_log.invoke(ctx)
         pass
 
-    print(result.output)
-    print(result.exception)
+    # print(result.output)
+    # print(result.exception)
     pass
