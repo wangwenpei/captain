@@ -3,6 +3,7 @@ import click
 from kaptain import captain
 from kaptain.fetch_log.command import fetch_log
 from kaptain.report import report
+# from kaptain.ws import ws
 
 
 @click.group()
@@ -22,6 +23,7 @@ def cli(ctx, debug, dry_run, verbose):
 
 cli.add_command(report)
 cli.add_command(fetch_log)
+# cli.add_command(ws)
 
 if __name__ == '__main__':
     cli(obj={})

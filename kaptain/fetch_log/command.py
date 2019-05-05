@@ -27,6 +27,7 @@ def fetch_log():
               envvar="KAPTAIN_FETCH_LOG_BUCKET", required=True)
 @click.option('--filter')
 @click.argument('target')
+# @pass_captain
 @click.pass_context
 def gcp(ctx, target, save_dir, project, bucket_name, filter):
     """fetch gcp log"""
@@ -42,10 +43,11 @@ def gcp(ctx, target, save_dir, project, bucket_name, filter):
     with open(write_file, 'ab') as fp:
         for blob in blobs:
             if filter in blob.name:
-                print(blob.name, '匹配成功')
+                # print(blob.name, '匹配成功')
                 string_buffer = blob.download_as_string()
                 fp.write(string_buffer)
-            else:
-                print(blob.name, '跳过匹配')
+            # else:
+                # todo:: 集成Logger
+                # print(blob.name, '跳过匹配')
 
     pass
