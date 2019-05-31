@@ -25,11 +25,14 @@ def fetch_log():
               envvar="KAPTAIN_FETCH_LOG_PROJECT", required=True)
 @click.option('--bucket-name',
               envvar="KAPTAIN_FETCH_LOG_BUCKET", required=True)
-@click.option('--filter')
+@click.option('--filter', default='')
+@click.option('--date-filter', default='')
+@click.option('--display/--no-display', default=False)  # 临时策略
 @click.argument('target')
 # @pass_captain
 @click.pass_context
-def gcp(ctx, target, save_dir, project, bucket_name, filter):
+def gcp(ctx, target, save_dir, project, bucket_name, filter, date_filter,
+        display):
     """fetch gcp log"""
 
     from google.cloud import storage
@@ -43,11 +46,14 @@ def gcp(ctx, target, save_dir, project, bucket_name, filter):
     with open(write_file, 'ab') as fp:
         for blob in blobs:
             if filter in blob.name:
-                # print(blob.name, '匹配成功')
-                string_buffer = blob.download_as_string()
-                fp.write(string_buffer)
+                if date_filter is '' or date_filter in blob.name:
+                    if display:
+                        print('将会下载的日志文件:', blob.name)
+                    else:
+                        string_buffer = blob.download_as_string()
+                        fp.write(string_buffer)
             # else:
-                # todo:: 集成Logger
-                # print(blob.name, '跳过匹配')
+            #     # todo:: 集成Logger
+            #     print(blob.name, '跳过匹配')
 
     pass
