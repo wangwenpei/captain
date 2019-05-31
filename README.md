@@ -48,12 +48,15 @@ kap report "hello world"             # send to public channel
 ```
 
 
-#### Fetch GCP Log
+### Fetch GCP Log
 
 
-##### Pre-Requirements
+#### Pre-Requirements
 
 - gcloud cli
+- gcloud api account with google storage permission
+
+#### how to
 
 
 ```
