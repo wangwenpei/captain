@@ -17,7 +17,7 @@ pip install kaption
 
 
 
-### report
+### Report to slack
 
 
 report operation to platform, currently it only support slack.
